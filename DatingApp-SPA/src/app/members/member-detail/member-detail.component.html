@@ -25,7 +25,7 @@
           </div>
           <div>
             <strong>Member since:</strong>
-            <p>{{ user.created | date: 'mediumDate' }}</p>
+            <p>{{ user.created | date: "mediumDate" }}</p>
           </div>
         </div>
         <div class="card-footer">
@@ -50,10 +50,13 @@
             <p>{{ user?.interests }}</p>
           </tab>
           <tab heading="Photos">
-            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            <ngx-gallery
+              [options]="galleryOptions"
+              [images]="galleryImages"
+            ></ngx-gallery>
           </tab>
           <tab heading="Messages">
-            <p>Messages will go here</p>
+            <app-member-messages [recipientId]="user.id"></app-member-messages>
           </tab>
         </tabset>
       </div>
