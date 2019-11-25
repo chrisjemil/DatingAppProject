@@ -37,7 +37,7 @@ namespace DatingApp.API
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             ConfigureServices(services);
         }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
@@ -45,7 +45,7 @@ namespace DatingApp.API
                     {
                         opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                     });
-            
+
             // services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
             //     .AddNewtonsoftJson(opt =>
             //     {
@@ -94,9 +94,10 @@ namespace DatingApp.API
                         }
                     });
                 });
+                app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
