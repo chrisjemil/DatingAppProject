@@ -12,6 +12,9 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/messages']">Messages</a>
       </li>
+      <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+      </li>
     </ul>
 
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
@@ -27,7 +30,9 @@
           ><i class="fa fa-user"></i> Edit Profile</a
         >
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
+        <a class="dropdown-item" (click)="logout()"
+          ><i class="fa fa-sign-out"></i> Logout</a
+        >
       </div>
     </div>
 
@@ -53,7 +58,11 @@
         required
         [(ngModel)]="model.password"
       />
-      <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">
+      <button
+        [disabled]="!loginForm.valid"
+        class="btn btn-success my-2 my-sm-0"
+        type="submit"
+      >
         Login
       </button>
     </form>
